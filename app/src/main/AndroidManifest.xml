@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".game_start"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+            />
 
         <activity
             android:name=".GameActivity"
