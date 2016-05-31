@@ -15,14 +15,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".game_start"
-            />
-
         <activity
-            android:name=".GameActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_game"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:name=".game_start"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".FinishActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
