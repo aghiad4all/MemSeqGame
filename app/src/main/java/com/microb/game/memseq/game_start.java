@@ -702,11 +702,7 @@ public class game_start extends AppCompatActivity {
                 }
                 if(lives==0){
                     Intent finish = new Intent(game_start.this, FinishActivity.class);
-                    finish.putExtra("level", level);
-                    oldHIghScore=preferenceSettings.getInt("highscore", 0);
-                    if(level>oldHIghScore){
-                        preferenceEditor.putInt("HighScore", level);
-                    }
+                    finish.putExtra("level", Integer.toString(level) );
                     startActivity(finish);
                 }
             }
