@@ -2,6 +2,8 @@ package com.microb.game.memseq;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Environment;
@@ -11,6 +13,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 public class FinishActivity extends AppCompatActivity {
 
@@ -39,7 +45,8 @@ public class FinishActivity extends AppCompatActivity {
         //***Check high Score
         preferenceSettings = getPreferences(PREFERENCE_MODE_PRIVATE);
         preferenceEditor = preferenceSettings.edit();
-        tempScore= Integer.valueOf(getIntent().getStringExtra("level").toString());
+        //tempScore= Integer.valueOf(getIntent().getStringExtra("level").toString());
+        tempScore=1;
         highScore =  preferenceSettings.getInt("highScore", 0);
         if(tempScore>highScore){
             preferenceEditor.putInt("highScore",tempScore);
@@ -69,18 +76,30 @@ public class FinishActivity extends AppCompatActivity {
         share.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Select a file from sdcard to share
-                String fileName = "gameover.png";//Name of an image
-                String externalStorageDirectory = Environment.getExternalStorageDirectory().toString();
-                String myDir = externalStorageDirectory + "/saved_images/"; // the file will be in saved_images
-                Uri uri = Uri.parse("file:///" + myDir + fileName);
+                String text = "Look at my awesome picture";
+                Bitmap bitmap= BitmapFactory.decodeResource(getResources(), R.drawable.logo);
+                String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)+"/Logo.png";
+                OutputStream out = null;
+                File file=new File(path);
+                try {
+                    out = new FileOutputStream(file);
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+                    out.flush();
+                    out.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                path=file.getPath();
+                Uri bmpUri = Uri.parse("file://"+path);
+                Intent shareIntent = new Intent();
+                shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+                shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                shareIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, text);
+                shareIntent.setType("image/*");
+                startActivity(Intent.createChooser(shareIntent,"Share with"));
 
-                Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-                shareIntent.setType("text/html");
-                shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, (String) v.getTag(R.string.app_name));
-                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "I am having so much fun playing MEMSEQ, my Latest score is: "+tempScore);
-                shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
-                startActivity(Intent.createChooser(shareIntent, "Share Deal"));
+
             }
         });
     }
