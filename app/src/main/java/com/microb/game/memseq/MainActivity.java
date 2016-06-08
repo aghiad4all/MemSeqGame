@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 public class MainActivity extends AppCompatActivity {
 
     ImageButton start;
+    ImageButton instruction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,11 +21,24 @@ public class MainActivity extends AppCompatActivity {
     public void StartButtonListener(){
         start=(ImageButton)findViewById(R.id.imageButton);
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.start);
-        start.setOnClickListener(new View.OnClickListener(){
+        start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent aintent = new Intent(MainActivity.this, game_start.class);
                 mp.start();
+                startActivity(aintent);
+            }
+
+
+        });
+    }
+
+    public void InstructionButtonListener(){
+        instruction=(ImageButton)findViewById(R.id.imageButton2);
+        instruction.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent aintent = new Intent(MainActivity.this, InstructionActivity.class);
                 startActivity(aintent);
             }
 
