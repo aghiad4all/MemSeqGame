@@ -45,12 +45,13 @@ public class FinishActivity extends AppCompatActivity {
         //***Check high Score
         preferenceSettings = getPreferences(PREFERENCE_MODE_PRIVATE);
         preferenceEditor = preferenceSettings.edit();
-        //tempScore= Integer.valueOf(getIntent().getStringExtra("level").toString());
-        tempScore=1;
+        tempScore= Integer.valueOf(getIntent().getStringExtra("level").toString());
+        //tempScore=1;
         highScore =  preferenceSettings.getInt("highScore", 0);
         if(tempScore>highScore){
-            preferenceEditor.putInt("highScore",tempScore);
             ifHighScore.setText("New High Score!");
+            preferenceEditor.putInt("highScore", tempScore);
+            preferenceEditor.commit();
         }
         /////////////////////////////////////////////////////
         score.setText(Integer.toString(tempScore));
@@ -67,6 +68,7 @@ public class FinishActivity extends AppCompatActivity {
                 Intent aintent = new Intent(FinishActivity.this, game_start.class);
                 mp.start();
                 startActivity(aintent);
+                finish();
             }
         });
     }
@@ -96,6 +98,8 @@ public class FinishActivity extends AppCompatActivity {
                 shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 shareIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
                 shareIntent.putExtra(Intent.EXTRA_TEXT, text);
+                shareIntent.putExtra(Intent.EXTRA_TITLE, text);
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, text);
                 shareIntent.setType("image/*");
                 startActivity(Intent.createChooser(shareIntent,"Share with"));
 

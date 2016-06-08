@@ -704,6 +704,7 @@ public class game_start extends AppCompatActivity {
                     Intent finish = new Intent(game_start.this, FinishActivity.class);
                     finish.putExtra("level", Integer.toString(level) );
                     startActivity(finish);
+                    finish();
                 }
             }
 

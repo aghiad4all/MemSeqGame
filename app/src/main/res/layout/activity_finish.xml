@@ -53,7 +53,10 @@
             android:text="100"
             android:textColor="#fff000"
             android:textSize="30dp"
-            android:padding="30dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
             android:background="@drawable/textview_red_border"
             android:id="@+id/textView4" />
     </LinearLayout>
