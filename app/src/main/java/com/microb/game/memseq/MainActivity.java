@@ -12,11 +12,14 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton start;
     ImageButton instruction;
+    ImageButton about;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         StartButtonListener();
+        InstructionButtonListener();
+        AboutButtonListener();
     }
     public void StartButtonListener(){
         start=(ImageButton)findViewById(R.id.imageButton);
@@ -28,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
                 mp.start();
                 startActivity(aintent);
             }
-
-
         });
     }
 
@@ -41,8 +42,17 @@ public class MainActivity extends AppCompatActivity {
                 Intent aintent = new Intent(MainActivity.this, InstructionActivity.class);
                 startActivity(aintent);
             }
+        });
+    }
 
-
+    public void AboutButtonListener(){
+        about=(ImageButton)findViewById(R.id.imageButton3);
+        about.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent aintent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(aintent);
+            }
         });
     }
 }

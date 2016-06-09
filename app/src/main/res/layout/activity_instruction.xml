@@ -14,6 +14,7 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/linearlayout"
         android:layout_alignParentStart="true">
 
         <TextView
@@ -23,7 +24,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="1)"
             android:layout_marginRight="10dp"
-            android:textSize="20dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
             android:textColor="#ff0000"
             android:id="@+id/textView7" />
 
@@ -34,11 +36,130 @@
             android:text="You have 5 seconds to memorize the Sequence on the screen"
             android:id="@+id/textView6"
             android:textColor="#fff000"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:layout_weight="5"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
+            android:maxLines="4"
+            android:lines="4"
+
             />
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearlayout2"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/linearlayout"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="2)"
+            android:layout_marginRight="10dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#ff0000"
+            android:id="@+id/textView8" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Once the sequence disappear type in the sequence again in the correct order"
+            android:id="@+id/textView9"
+            android:textColor="#fff000"
+            android:textSize="20sp"
+            android:maxLines="4"
+            android:lines="4"
+            android:textStyle="bold"
+            android:layout_weight="5"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearlayout3"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/linearlayout2"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="3)"
+            android:layout_marginRight="10dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#ff0000"
+            android:id="@+id/textView10" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="You have 3 Passes and 3 Lives !"
+            android:id="@+id/textView11"
+            android:textColor="#fff000"
+            android:textSize="20sp"
+            android:maxLines="3"
+            android:lines="3"
+            android:textStyle="bold"
+            android:layout_weight="5"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearlayout4"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/linearlayout3"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="4)"
+            android:layout_marginRight="10dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#ff0000"
+            android:id="@+id/textView12" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Guess as much Sequences as you can and beat Your High Score !"
+            android:id="@+id/textView13"
+            android:textColor="#fff000"
+            android:textSize="20sp"
+            android:maxLines="4"
+            android:lines="4"
+            android:textStyle="bold"
+            android:layout_weight="5"
+
+            />
+    </LinearLayout>
+
+    <ImageButton
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:id="@+id/imageButton5"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/playinst" />
 </RelativeLayout>
